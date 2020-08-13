@@ -967,7 +967,7 @@ class ModelMultipleOps(torch.nn.Module):
         out = self.conv2(out)
         out = torch.nn.functional.max_pool2d(out, 2, 2)
         out = self.cat.cat([out, out])
-        out = out.view(-1, 3 * 2 * 2)
+        out = out.reshape(-1, 3 * 2 * 2)
         out = self.fc(out)
         return out
 
@@ -1001,6 +1001,6 @@ class ModelMultipleOpsNoAvgPool(torch.nn.Module):
         out = self.conv2(out)
         out = torch.nn.functional.max_pool2d(out, 2, 2)
         out = self.cat.cat([out, out])
-        out = out.view(-1, 3 * 2 * 2)
+        out = out.reshape(-1, 3 * 2 * 2)
         out = self.fc(out)
         return out
